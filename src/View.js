@@ -9,7 +9,7 @@ const { div, h1, pre, form, label, input, p } = hh(h);
 function tipForm(dispatch) {
     return form({ className: "" }, [
         div([
-            label({ htmlFor: "bill-input" }, "Bill amount"),
+            label({ htmlFor: "bill-input" }, "Bill amount ($)"),
             input({
                 type: "text",
                 className: "",

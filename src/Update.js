@@ -20,11 +20,13 @@ export function tipInputMsg(value) {
 }
 
 function calculateTotal(bill, tip) {
-    return bill * (1 + tip / 100);
+    const result = bill * (1 + tip / 100) || 0;
+    return Number.parseFloat(result).toFixed(2);
 }
 
 function calculateTip(bill, tip) {
-    return bill * (tip / 100);
+    const result = bill * (tip / 100) || 0;
+    return Number.parseFloat(result).toFixed(2);
 }
 
 function update(msg, model) {
