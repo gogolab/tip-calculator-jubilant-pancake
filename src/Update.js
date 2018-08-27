@@ -19,22 +19,30 @@ export function tipInputMsg(value) {
     };
 }
 
+function calculateTotal(bill, tip) {
+    return bill * (1 + tip / 100);
+}
+
+function calculateTip(bill, tip) {
+    return bill * (tip / 100);
+}
+
 function update(msg, model) {
     switch (msg.type) {
         case MSGS.BILL_INPUT_CHANGED: {
             return {
                 ...model,
                 billInput: msg.billInput,
-                total: msg.billInput * (1 + model.tipInput / 100),
-                tip: msg.billInput * (model.tipInput / 100)
+                total: calculateTotal(msg.billInput, model.tipInput),
+                tip: calculateTip(msg.billInput, model.tipInput)
             };
         }
         case MSGS.TIP_INPUT_CHANGED: {
             return {
                 ...model,
                 tipInput: msg.tipInput,
-                total: model.billInput * (1 + msg.tipInput / 100),
-                tip: model.billInput * (msg.tipInput / 100)
+                total: calculateTotal(model.billInput, msg.tipInput),
+                tip: calculateTip(model.billInput, msg.tipInput)
             };
         }
 
