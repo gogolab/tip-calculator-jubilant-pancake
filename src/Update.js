@@ -19,14 +19,21 @@ export function tipInputMsg(value) {
     };
 }
 
+const round = (num, places) => {
+    num = num * Math.pow(10, places);
+    num = Math.round(num);
+    num = num * Math.pow(10, -1 * places);
+    return num;
+};
+
 function calculateTotal(bill, tip) {
     const result = bill * (1 + tip / 100) || 0;
-    return Number.parseFloat(result).toFixed(2);
+    return round(result, 2).toFixed(2);
 }
 
 function calculateTip(bill, tip) {
     const result = bill * (tip / 100) || 0;
-    return Number.parseFloat(result).toFixed(2);
+    return round(result, 2).toFixed(2);
 }
 
 function update(msg, model) {

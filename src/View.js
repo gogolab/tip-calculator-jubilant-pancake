@@ -7,21 +7,21 @@ import { billInputMsg, tipInputMsg } from "./Update";
 const { div, h1, pre, form, label, input, p } = hh(h);
 
 function tipForm(dispatch) {
-    return form({ className: "" }, [
-        div([
+    return form({ className: "flex flex-column" }, [
+        div({ className: "flex flex-column" }, [
             label({ htmlFor: "bill-input" }, "Bill amount ($)"),
             input({
                 type: "text",
-                className: "",
+                className: "mb2",
                 id: "bill-input",
                 oninput: e => dispatch(billInputMsg(e.target.value))
             })
         ]),
-        div([
+        div({ className: "flex flex-column" }, [
             label({ htmlFor: "tip-input" }, "Tip (%)"),
             input({
                 type: "text",
-                className: "",
+                className: "mb2",
                 id: "tip-input",
                 oninput: e => dispatch(tipInputMsg(e.target.value))
             })
